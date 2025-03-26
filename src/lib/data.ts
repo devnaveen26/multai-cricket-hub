@@ -681,3 +681,26 @@ export const updateMatchStatus = (matchId: string, status: Match['status'], team
   
   return match;
 };
+
+// New function to add a match
+export const addNewMatch = (matchData: {
+  team1: string;
+  team1Id: string;
+  team2: string;
+  team2Id: string;
+  date: string;
+  time: string;
+  venue: string;
+  status: Match['status'];
+}): Match => {
+  // Generate a simple ID (in a real app, this would be handled by the backend)
+  const newId = `m${matches.length + 1}`;
+  
+  const newMatch: Match = {
+    id: newId,
+    ...matchData
+  };
+  
+  matches.push(newMatch);
+  return newMatch;
+};
